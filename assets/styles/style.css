@@ -1,0 +1,66 @@
+/* COLOR PALETTE */
+:root {
+  --background-gradient: linear-gradient(
+    90deg,
+    rgba(62, 0, 72, 1) 0%,
+    rgba(76, 0, 88, 0.8575805322128851) 50%,
+    rgba(62, 0, 72, 1) 100%
+  );
+  --category-card-gradient: linear-gradient(
+    180deg,
+    rgba(155, 17, 125, 1) 40%,
+    rgba(102, 43, 176, 1) 100%
+  );
+  --question-card-gradient: linear-gradient(
+    180deg,
+    rgba(62, 0, 72, 1) 30%,
+    rgba(83, 50, 125, 1) 100%
+  );
+  --text-primary-color: #e5e5e5;
+  --text-secondary-color: #9cf201;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #9cf201;
+  border: 0px groove #ffffff;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b2ff24;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #bef556;
+}
+::-webkit-scrollbar-track {
+  background: #3e0048;
+  border: 0px solid #ffffff;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #3e0048;
+}
+::-webkit-scrollbar-track:active {
+  background: #3e0048;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* GENERAL */
+
+body {
+  margin: 0;
+  background: var(--background-gradient);
+}
+
+/* HEADER */
+/* */
