@@ -8,6 +8,6 @@ from steam where year(release_date) >= year(current_date()) - 10 group by year(r
 
 
 
-/*Quais os 3 gêneros com maior restrição de idade?*/
+
 
 
