@@ -23,12 +23,99 @@
 <body>
 
     <!-- HEADER -->
-    <header>
+    <header class="header-home">
+        <div class="header-home-logo">
+            <img src="./assets/img/logo-steam.png" width="80" height="80" alt="">
+            <p>STEAM Database</p>
+        </div>
+        <div class="header-home-btn">
+            <button>Contato</button>
+        </div>
     </header>
 
     <!-- MAIN HOME -->
-    <main>
+    <main class="main-home">
+        <h1>
+            Consulta por
+        </h1>
+        <div class="container d-flex flex-row justify-content-center align-items-center flex-wrap category-main">
+            <div class="category-btn">
+                <button id="price">preço</button>
+            </div>
+            <div class="category-btn">
+                <button id="ratings">avaliações</button>
+            </div>
+            <div class="category-btn">
+                <button class="large-text" id="age">idade recomendada</button>
+            </div>
+            <div class="category-btn">
+                <button id="language">linguagem</button>
+            </div>
+            <div class="category-btn">
+                <button id="genres">gêneros</button>
+            </div>
+            <div class="category-btn">
+                <button class="large-text" id="launch-date">data de lançamento</button>
+            </div>
+            <div class="category-btn">
+                <button id="tags">tags</button>
+            </div>
+            <div class="category-btn">
+                <button class="large-text" id="developer">desenvolvedora</button>
+            </div>
+            <div class="category-btn">
+                <button class="large-text" id="playtime">tempo de jogo</button>
+            </div>
+            <div class="category-btn">
+                <button id="description">descrição</button>
+            </div>
+            <div class="category-btn">
+                <button id="supp">suporte</button>
+            </div>
+            <div class="category-btn">
+                <button class="large-text" id="downloads">quantidade de downloads</button>
+            </div>
+        </div>
+        <div class="return-btn">
+            <button>Voltar</button>
+        </div>
     </main>
+
+    <!-- MAIN CARDS -->
+    <section class="container d-flex flex-colum card-section" id="question-price-ratings">
+        <div class="card-question">
+            <h1>
+                Dentre os jogos por menos de 4 dólares, quantos possuem a quantidade de avaliações positivas acima da
+                média?
+            </h1>
+            <div class="card-categories">
+                <div class="category-btn-sm">
+                    <button id="price">preço</button>
+                </div>
+                <div class="category-btn-sm">
+                    <button id="ratings">ratings</button>
+                </div>
+            </div>
+            <div class="card-graphic">
+                <img src="./assets/img/price-positive-ratings-graphic.png" alt="">
+            </div>
+            <div class="card-subtitle">
+                <div class="card-description">
+                    <p>
+                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                        Lorem ipsum Lorem ipsum
+                    </p>
+                </div>
+                <div class="card-btn-section">
+                    <button><a href="./assets/graphics/price-positive-ratings-graphic.png" download>Baixar
+                            imagem</a></button>
+                    <button><a href="./queries/read-database/price-positive-ratings-query.sql" download>Baixar
+                            query</a></button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- FOOTER -->
     <footer>
