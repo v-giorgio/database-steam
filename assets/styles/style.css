@@ -199,33 +199,6 @@ body {
   transition-duration: 0.2s;
 }
 
-/* BACK BUTTON HOME */
-.return-btn button {
-  margin: 5% 0 5% 10%;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: none;
-  border-radius: 50px;
-  width: 200px;
-  padding: 10px 20px;
-  contain: content;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
-  font-family: Poppins;
-  color: var(--text-primary-color);
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.return-btn button:hover {
-  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.5);
-}
-
-.return-btn button:hover,
-.return-btn button:not(:hover) {
-  transition-duration: 0.2s;
-}
-
 /* CARDS HOME */
 .card-section {
   background: var(--question-card-background);
@@ -347,61 +320,66 @@ body {
 }
 
 /* PÁGINA CONTATO */
-#div-contato-1{
+#div-contato-1 {
   margin-top: 50px;
   display: flex;
   justify-content: space-around;
-  width: 1300px;
-  
+  flex-wrap: wrap;
 }
 
-#div-contato-2{
+#div-contato-2 {
   display: flex;
   justify-content: space-evenly;
   margin-top: 10px;
-  width: 1300px;
+  flex-wrap: wrap;
 }
 
-.img-contato{
+.img-contato {
   width: 180px;
   height: 180px;
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
   border-radius: 360px;
-  box-shadow:  6px 9px 15px #9cf201;
-  -webkit-box-shadow:  6px 9px 15px #b2ff24;;
-  -moz-box-shadow:  6px 9px  #bef556 ;
+  box-shadow: 6px 9px 15px #9cf201;
+  -webkit-box-shadow: 6px 9px 15px #b2ff24;
+  -moz-box-shadow: 6px 9px #bef556;
   object-fit: cover;
   object-position: 0 20%;
 }
 
-.nome-contato{
-  color: var(--text-secondary-color)
+.nome-contato {
+  color: var(--text-secondary-color);
 }
 
-.div-contribuidor{
+.div-contribuidor {
   display: flex;
   flex-direction: column;
 }
 
-.icone-contato{
+.icone-contato {
   display: flex;
-  justify-content:space-between;
-  color: var(--text-secondary-color) 
-}
-
-.icon{
+  justify-content: space-between;
   color: var(--text-secondary-color);
 }
 
-.div-header-contato{
+.icon {
+  color: var(--text-secondary-color);
+}
+
+.div-header-contato {
   background-image: url("../img/background-image2.jpg");
   height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
 }
 
 /* INVISIBLE */
-
 .invisible {
   display: none;
 }
@@ -420,8 +398,12 @@ body {
     margin-right: 0;
   }
 
-  .header-home {
+  .header-home,
+  .div-header-contato {
     height: 70vh;
   }
-}
 
+  .div-contribuidor {
+    margin-top: 50px;
+  }
+}
