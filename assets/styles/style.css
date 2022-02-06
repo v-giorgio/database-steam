@@ -76,7 +76,8 @@ body {
   background: var(--background-gradient);
 }
 
-/* HEADER HOME */
+/* HEADER */
+
 .header-home {
   display: flex;
   flex-direction: row;
@@ -345,6 +346,60 @@ body {
   color: var(--text-primary-color);
 }
 
+/* PÁGINA CONTATO */
+#div-contato-1{
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  width: 1300px;
+  
+}
+
+#div-contato-2{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  width: 1300px;
+}
+
+.img-contato{
+  width: 180px;
+  height: 180px;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+  border-radius: 360px;
+  box-shadow:  6px 9px 15px #9cf201;
+  -webkit-box-shadow:  6px 9px 15px #b2ff24;;
+  -moz-box-shadow:  6px 9px  #bef556 ;
+  object-fit: cover;
+  object-position: 0 20%;
+}
+
+.nome-contato{
+  color: var(--text-secondary-color)
+}
+
+.div-contribuidor{
+  display: flex;
+  flex-direction: column;
+}
+
+.icone-contato{
+  display: flex;
+  justify-content:space-between;
+  color: var(--text-secondary-color) 
+}
+
+.icon{
+  color: var(--text-secondary-color);
+}
+
+.div-header-contato{
+  background-image: url("../img/background-image2.jpg");
+  height: 100vh;
+}
+
 /* INVISIBLE */
 
 .invisible {
@@ -369,3 +424,4 @@ body {
     height: 70vh;
   }
 }
+
