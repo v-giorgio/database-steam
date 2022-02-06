@@ -133,8 +133,6 @@ body {
   color: var(--text-primary-color);
   font-size: 20px;
   font-weight: 600;
-  text-align: center;
-  margin:0 auto;
 }
 
 .header-home-btn button:hover {
@@ -205,7 +203,7 @@ body {
   background: var(--question-card-background);
   background: var(--question-card-gradient);
   border-radius: 50px;
-  margin-bottom: 3%;
+  margin-bottom: 5%;
 }
 
 .card-question {
@@ -380,27 +378,30 @@ body {
   background-position-y: center;
 }
 
-
 /* Footer */
-footer{
+footer {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: none;
   border-radius: 50px 50px 0 0;
   width: 40%;
-  height: 12%;
+  height: 8%;
   contain: content;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
   font-family: Poppins;
   color: var(--text-primary-color);
   font-size: 30px;
   font-weight: 600;
+  letter-spacing: 1px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 10px;
+  align-items: center;
 }
-
 
 /* INVISIBLE */
 .invisible {
@@ -430,4 +431,3 @@ footer{
     margin-top: 50px;
   }
 }
-
