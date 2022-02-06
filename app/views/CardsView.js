@@ -148,7 +148,7 @@ class CardsView {
   <section class="container d-flex flex-colum card-section" id="question-price-ratings">
             <div class="card-question">
                 <h1>
-                    Entre 2070 registros, quantos jogos não possuem, e quantos não possuem, inglês como linguagem
+                    Entre 2070 registros, quantos jogos possuem, e quantos não possuem, inglês como linguagem
                     oficial e
                     qual a média de suas avaliações positivas e negativas?
                 </h1>
