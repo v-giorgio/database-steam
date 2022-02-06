@@ -9,7 +9,7 @@
 
 ## 🔖 Descrição:
 
-<p style="text-align: center; font-size: 16px">✨ Projeto de conclusão do Módulo 3 da <a href="https://www.resilia.com.br/">Resilia Educação</a> ✨</p>
+<p align="center" style="font-size: 16px">✨ Projeto de conclusão do Módulo 3 da <a href="https://www.resilia.com.br/">Resilia Educação</a> ✨</p>
 <p style="font-size: 14px">O projeto teve como objetivo a criação de um banco de dados MySQL para criar consultas e gráficos interpretativos sobre o tema. Para a análise de dados, foi utilizada a ferramenta Metabase.</p>
 <p style="font-size: 14px">Foi utilizado SCRUM como metodologia ágil para a organização do projeto, com o uso da ferramenta Trello.</p>
 <p style="font-size: 14px">Para a demonstração detalhada das perguntas, gráficos e análises, foi desenvolvido um site em HTML, CSS e JavaScript (ES6), cujo protótipo foi desenvolvido no Figma.</p>
@@ -52,26 +52,19 @@
 
 ## 🛠️ Tecnologias e ferramentas utilizadas:
 
-<ul align="center" style="list-style: none;">
-<li>
+<div align="center">
 <img style="width:40%; margin-top: 30px" src="./assets/img/mysql-logo.png">
-</li>
-<li>
+
 <img style="width:40%; margin-top: 30px" src="./assets/img/metabase-removebg-preview.png">
-</li>
-<li>
+
 <img style="width:40%; margin-top: 30px" src="./assets/img/html-css-js-logo-removebg-preview.png">
-</li>
-<li>
+
 <img style="width: 20%; margin-top: 30px" src="./assets/img/figma-icon.png">
-</li>
-<li>
+
 <img style="width:40%; margin-top: 30px" src="./assets/img/trello-icon.png">
-</li>
-<li>
+
 <img style="width:30%; margin-top: 30px" src="./assets/img/discord-icon.png">
-</li>
-</ul>
+</div>
 
 <br>
 <hr/>
@@ -89,7 +82,7 @@
             <hr />
             <div>
                 <a href="https://www.linkedin.com/in/helena-machado-4a7626228/">
-                <img style="width: 40px; border-radius: 100px" src="./assets/img/linkedin-icon.png">
+                <img style="width: 40px; border-radius: 100px;" src="./assets/img/linkedin-icon.png">
                 </a>
                 <a href="https://github.com/helena-machado">
                 <img style="width: 40px" src="./assets/img/github-icon.png">
