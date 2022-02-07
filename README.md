@@ -131,5 +131,19 @@
                 </a>
             </div>
         </td>
+        <td align="center">
+            <img src="./assets/img/gabriel.jfif" style="width: 200px; border-radius: 100px">
+            <hr />
+            <h3>Gabriel Lima</h3>
+            <hr />
+            <div>
+                <a href="https://www.linkedin.com/in/gabrielimasantos/">
+                <img style="width: 40px; border-radius: 100px" src="./assets/img/linkedin-icon.png">
+                </a>
+                <a href="https://github.com/eogakrl">
+                <img style="width: 40px" src="./assets/img/github-icon.png">
+                </a>
+            </div>
+        </td>
     </tr>
 </table>

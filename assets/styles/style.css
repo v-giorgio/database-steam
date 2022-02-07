@@ -381,6 +381,18 @@ body {
   background-position-y: center;
 }
 
+.icon:hover {
+  width: 30px;
+  height: 30px;
+  color: #b2ff24;
+}
+
+.icon-github:hover {
+  width: 40px;
+  height: 40px;
+  color: #b2ff24;
+}
+
 /* Footer */
 footer {
   background: rgba(255, 255, 255, 0.1);
@@ -434,28 +446,20 @@ footer {
     margin-top: 50px;
   }
 
-  #div-contato-1{
+  #div-contato-1 {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  #div-contato-2{
+  #div-contato-2 {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-}
 
-
-.icon:hover{
-  width: 30px;
-  height: 30px;
-  color: #b2ff24;
-}
-
-.icon-github:hover{
-  width: 40px;
-  height: 40px;
-  color: #b2ff24;
+  footer {
+    font-size: 16px;
+    padding-top: 10%;
+  }
 }
