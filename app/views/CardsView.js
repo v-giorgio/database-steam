@@ -1,3 +1,4 @@
+google.charts.load("current", { packages: ["corechart", "bar"] });
 class CardsView {
   clearSection(section) {
     section.innerHTML = ``;
@@ -12,15 +13,15 @@ class CardsView {
                 média?
             </h1>
             <div class="card-categories">
-                <div class="category-btn-sm">
+                <div class="category-btn-sm-lg">
                     <button id="price">preço</button>
                 </div>
-                <div class="category-btn-sm">
+                <div class="category-btn-sm-lg">
                     <button id="ratings">avaliações</button>
                 </div>
             </div>
             <div class="card-graphic">
-                <img src="./assets/img/price-positive-ratings-graphic.png" alt="">
+                <div id="dollars"></div>
             </div>
             <div class="card-subtitle">
                 <div class="card-description">
@@ -45,15 +46,15 @@ class CardsView {
                     Quais os 10 jogos mais caros e quais os seus gêneros?
                 </h1>
                 <div class="card-categories">
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="price">preço</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="genres">gêneros</button>
                     </div>
                 </div>
                 <div class="card-graphic">
-                    <img src="./assets/img/games-genres-expensive-grafics.png" alt="">
+                    <div id="most-expensive"></div>
                 </div>
                 <div class="card-subtitle">
                     <div class="card-description">
@@ -80,10 +81,10 @@ class CardsView {
                     Qual é a quantidade de jogos e seus preços com as categorias 'Competitivo' e 'cross-platform'?
                 </h1>
                 <div class="card-categories">
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="price">preço</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="tags">tags</button>
                     </div>
                 </div>
@@ -107,6 +108,96 @@ class CardsView {
             </div>
         </section>
         `;
+
+    google.charts.setOnLoadCallback(dollars);
+
+    function dollars() {
+      let data = google.visualization.arrayToDataTable([
+        ["AVALIAÇÕES POSITIVAS", "QUANTIDADE DE JOGOS POR MENOS DE 4 DÓLARES"],
+        ["Abaixo da média", 474],
+        ["Acima da média", 48],
+      ]);
+
+      let options = {
+        chartArea: { height: 350 },
+        height: 380,
+        pieHole: 0.5,
+        pieSliceTextStyle: {
+          color: "white",
+        },
+        backgroundColor: "#32003a",
+        fontName: "Verdana",
+        legend: {
+          position: "left",
+          alignment: "center",
+          textStyle: { color: "#FFFFFF" },
+        },
+      };
+
+      let chart = new google.visualization.PieChart(
+        document.getElementById("dollars")
+      );
+      chart.draw(data, options);
+    }
+
+    google.charts.setOnLoadCallback(mostExpensive);
+
+    function mostExpensive() {
+      let data = new google.visualization.arrayToDataTable([
+        ["JOGO", "CATEGORIA", "PREÇO"],
+        ["3DCoat 4.8", "Animação", 95.99],
+        ["Leadwerks", "Animação; Ilustração", 78.99],
+        ["Aartform Curvy 3D 3.0", "Animação", 75.99],
+        ["Clickteam Fusion 2.5", "Animação; Educação", 69.99],
+        ["Wing IDE 5", "Utilidades", 60.99],
+        ["RPG Maker VX Ace", "Ilustração", 52.99],
+        ["Call of Duty: Ghosts", "Ação", 39.99],
+        ["Call of Duty: A W", "Ação", 39.99],
+        ["Wreckfest", "Ação; Independente", 38.99],
+        ["F.E.A.R.", "Ação", 35.96],
+      ]);
+
+      let options = {
+        height: 400,
+        backgroundColor: "#32003a",
+        chartArea: {
+          width: "60%",
+          backgroundColor: "#32003a",
+        },
+        legend: {
+          position: "none",
+        },
+        bar: {
+          groupWidth: "60%",
+        },
+        hAxis: {
+          title: "NOME DO JOGO",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+            fontName: "Verdana",
+            fontSize: 12,
+          },
+          minValue: 0,
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+            fontSize: 5.5,
+          },
+        },
+        vAxis: {
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+      };
+
+      let chart = new google.charts.Bar(
+        document.getElementById("most-expensive")
+      );
+      chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
   }
 
   findByRatings(section) {
@@ -118,15 +209,15 @@ class CardsView {
               média?
           </h1>
           <div class="card-categories">
-              <div class="category-btn-sm">
+              <div class="category-btn-sm-lg">
                   <button id="price">preço</button>
               </div>
-              <div class="category-btn-sm">
+              <div class="category-btn-sm-lg">
                   <button id="ratings">avaliações</button>
               </div>
           </div>
           <div class="card-graphic">
-              <img src="./assets/img/price-positive-ratings-graphic.png" alt="">
+              <div id="dollars"></div>
           </div>
           <div class="card-subtitle">
               <div class="card-description">
@@ -153,15 +244,15 @@ class CardsView {
                     qual a média de suas avaliações positivas e negativas?
                 </h1>
                 <div class="card-categories">
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="language">linguagem</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="ratings">avaliações</button>
                     </div>
                 </div>
                 <div class="card-graphic">
-                    <img src="./assets/img/english-positive-negative-ratings.png" alt="">
+                    <div id="english"></div>
                 </div>
                 <div class="card-subtitle">
                     <div class="card-description">
@@ -186,15 +277,15 @@ class CardsView {
                     Dos jogos que possuem e-mail de suporte, há mais avaliações positivas ou negativas?
                 </h1>
                 <div class="card-categories">
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="supp">suporte</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="ratings">avaliações</button>
                     </div>
                 </div>
                 <div class="card-graphic">
-                    <img src="./assets/img/games-support-email-graphic.png" alt="">
+                    <div id="email"></div>
                 </div>
                 <div class="card-subtitle">
                     <div class="card-description">
@@ -220,12 +311,12 @@ class CardsView {
                     <div class="category-btn-sm-lg">
                         <button id="developer">desenvolvedora</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="ratings">avaliações</button>
                     </div>
                 </div>
                 <div class="card-graphic">
-                    <img src="./assets/img/developer-negative-ratings-graphics.png" alt="">
+                   <div id="developer-ratings"></div>
                 </div>
                 <div class="card-subtitle">
                     <div class="card-description">
@@ -245,6 +336,181 @@ class CardsView {
             </div>
         </section>
   `;
+    google.charts.setOnLoadCallback(dollars);
+
+    function dollars() {
+      let data = google.visualization.arrayToDataTable([
+        ["AVALIAÇÕES POSITIVAS", "QUANTIDADE DE JOGOS POR MENOS DE 4 DÓLARES"],
+        ["Abaixo da média", 474],
+        ["Acima da média", 48],
+      ]);
+
+      let options = {
+        chartArea: { height: 350 },
+        height: 380,
+        pieHole: 0.5,
+        pieSliceTextStyle: {
+          color: "white",
+        },
+        backgroundColor: "#32003a",
+        fontName: "Verdana",
+        legend: {
+          position: "left",
+          alignment: "center",
+          textStyle: { color: "#FFFFFF" },
+        },
+      };
+
+      let chart = new google.visualization.PieChart(
+        document.getElementById("dollars")
+      );
+      chart.draw(data, options);
+    }
+
+    google.charts.setOnLoadCallback(english);
+
+    function english() {
+      let data = google.visualization.arrayToDataTable([
+        ["INGLÊS", "CONTAGEM", "MEDIA POSITIVA", "MÉDIA NEGATIVA"],
+        ["OUTRA LINGUAGEM", 1, 204, 215],
+        ["INGLÊS", 2069, 5618.92, 890.81],
+      ]);
+
+      let options = {
+        height: 380,
+        backgroundColor: "#32003a",
+        legend: { textStyle: { color: "#FFFFFF" } },
+        pointSize: 7,
+        seriesType: "bars",
+        series: {
+          pointShape: "circle",
+          1: {
+            type: "line",
+          },
+        },
+        vAxis: {
+          title: "AVALIAÇÕES",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+        hAxis: {
+          title: "LINGUAGEM",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+      };
+
+      let chart = new google.visualization.ComboChart(
+        document.getElementById("english")
+      );
+      chart.draw(data, options);
+    }
+
+    google.charts.setOnLoadCallback(email);
+
+    function email() {
+      let data = google.visualization.arrayToDataTable([
+        ["TIPO DE AVALIAÇÃO", "SOMA TOTAL", "MÉDIA GERAL"],
+        ["POSITIVA", 3763.778, 3647.07],
+        ["NEGATIVA", 644.446, 624.46],
+      ]);
+
+      let options = {
+        chartArea: { height: 320 },
+        height: 390,
+        backgroundColor: "#32003a",
+        colors: ["#faf170"],
+        hAxis: {
+          title: "MÉDIA",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+        vAxis: {
+          title: "QUANTIDADE",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+        bubble: {
+          textStyle: {
+            fontSize: 10,
+            fontName: "Verdana",
+            color: "black",
+            bold: false,
+            italic: false,
+            auraColor: "none",
+          },
+        },
+      };
+
+      let chart = new google.visualization.BubbleChart(
+        document.getElementById("email")
+      );
+      chart.draw(data, options);
+    }
+
+    google.charts.setOnLoadCallback(developerRatings);
+
+    function developerRatings() {
+      let data = google.visualization.arrayToDataTable([
+        ["DESENVOLVEDORA", "AVALIAÇÕES NEGATIVAS"],
+        ["Valve; Hidden Path Entertainment", 402.313],
+        ["OVERKILL", 56.523],
+        ["RETO MOTO", 34.416],
+        ["Rockstar North", 18.926],
+        ["The Fun Pimps", 16.905],
+        ["Expansive Worlds", 15.403],
+        ["Rocksteady Studios", 12.981],
+        ["Relic Entertainment", 12.038],
+        ["Little Orbit", 11.779],
+        ["Gearbox Software", 11.021],
+        ["Torn Banner Studios", 10.939],
+        ["Phosphor Games Studio", 10.167],
+        ["Endnight Games Ltd", 8.881],
+        ["Sledgehammer Games", 8.379],
+        ["Chucklefish", 7.816],
+      ]);
+
+      let options = {
+        chartArea: { height: 350 },
+        height: 380,
+        pieHole: 0.5,
+        pieSliceTextStyle: {
+          color: "white",
+        },
+        backgroundColor: "#32003a",
+        fontName: "Verdana",
+        legend: { position: "left", textStyle: { color: "#FFFFFF" } },
+      };
+
+      let chart = new google.visualization.PieChart(
+        document.getElementById("developer-ratings")
+      );
+      chart.draw(data, options);
+    }
   }
 
   findByAge(section) {
@@ -258,7 +524,7 @@ class CardsView {
               <div class="category-btn-sm-lg">
                   <button id="playtime">tempo de jogo</button>
               </div>
-              <div class="category-btn-sm">
+              <div class="category-btn-sm-lg">
                   <button id="tags">tags</button>
               </div>
               <div class="category-btn-sm-lg">
@@ -266,7 +532,7 @@ class CardsView {
               </div>
           </div>
           <div class="card-graphic">
-              <img src="./assets/img/tag-assassin-required-age-graphics.png" alt="">
+              <div id="assassin"></div>
           </div>
           <div class="card-subtitle">
               <div class="card-description">
@@ -297,7 +563,7 @@ class CardsView {
                     </div>
                 </div>
                 <div class="card-graphic">
-                    <img src="./assets/img/min-required-age-query.graphic2.png" alt="">
+                    <div id="required-age"></div>
                 </div>
                 <div class="card-subtitle">
                     <div class="card-description">
@@ -325,12 +591,12 @@ class CardsView {
                     <div class="category-btn-sm-lg">
                         <button id="age">idade recomendada</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="genres">gêneros</button>
                     </div>
                 </div>
                 <div class="card-graphic">
-                    <img src="./assets/img/games-genres-age-graphics.png" alt="">
+                    <div id="genres-age"></div>
                 </div>
                 <div class="card-subtitle">
                     <div class="card-description">
@@ -351,6 +617,136 @@ class CardsView {
             </div>
         </section>
   `;
+
+    google.charts.setOnLoadCallback(assassin);
+
+    function assassin() {
+      let data = google.visualization.arrayToDataTable([
+        ["NOME DO JOGO", "TEMPO MÉDIO"],
+        ["Counter-Strike", 17612],
+        [`Assassin's Creed IV Black Flag`, 3234],
+        [`Assassin'S Creed 2 Deluxe Edition`, 1046],
+        ["Dishonored", 749],
+        [`Assassin's Creed: Director's Cut Edition`, 360],
+        ["Styx: Master of Shadows", 243],
+        ["The Ship: Murder Party", 233],
+        ["Velvet Assassin", 9],
+      ]);
+
+      let options = {
+        height: 380,
+        backgroundColor: "#32003a",
+        chartArea: {
+          left: 350,
+          height: "60%",
+          width: "60%",
+        },
+        legend: {
+          position: "none",
+        },
+        hAxis: {
+          title: "TEMPO MÉDIO",
+          titleTextStyle: { color: "#FFF", italic: false, fontName: "Verdana" },
+          minValue: 0,
+          maxValue: 18000,
+          textStyle: { color: "#FFF", fontName: "Verdana" },
+        },
+        vAxis: {
+          title: "NOME DO JOGO",
+          titleTextStyle: { color: "#FFF", italic: false, fontName: "Verdana" },
+          textStyle: { color: "#FFF", fontName: "Verdana" },
+        },
+      };
+      let chart = new google.visualization.BarChart(
+        document.getElementById("assassin")
+      );
+
+      chart.draw(data, options);
+    }
+
+    google.charts.setOnLoadCallback(requiredAge);
+
+    function requiredAge() {
+      let data = google.visualization.arrayToDataTable([
+        ["ANO DE LANÇAMENTO", "TOTAL DE JOGOS"],
+        ["16", 67],
+        ["12", 13],
+        ["7", 2],
+      ]);
+
+      let options = {
+        chartArea: { height: 350 },
+        height: 380,
+        pieHole: 0.5,
+        pieSliceTextStyle: {
+          color: "white",
+        },
+        backgroundColor: "#32003a",
+        fontName: "Verdana",
+        legend: {
+          position: "left",
+          alignment: "center",
+          textStyle: { color: "#FFFFFF" },
+        },
+      };
+
+      let chart = new google.visualization.PieChart(
+        document.getElementById("required-age")
+      );
+      chart.draw(data, options);
+    }
+
+    google.charts.setOnLoadCallback(genresAge);
+
+    function genresAge() {
+      let data = google.visualization.arrayToDataTable([
+        ["GÊNEROS", "IDADE MÍNIMA"],
+        ["Ação", 18],
+        ["Violência; Estratégia", 18],
+        ["Ação; Aventura", 18],
+        ["Ação; RPG", 18],
+        ["Ação; Simulação", 18],
+      ]);
+
+      let options = {
+        chartArea: { height: 250 },
+        height: 380,
+        backgroundColor: "#32003a",
+        pointSize: 5,
+        series: { pointShape: "circle" },
+        legend: {
+          position: "none",
+        },
+        hAxis: {
+          title: "GÊNEROS",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+        vAxis: {
+          minValue: 0,
+          title: "IDADE MÍNIMA",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+      };
+
+      let chart = new google.visualization.AreaChart(
+        document.getElementById("genres-age")
+      );
+      chart.draw(data, options);
+    }
   }
 
   findByLanguage(section) {
@@ -362,15 +758,15 @@ class CardsView {
               qual a média de suas avaliações positivas e negativas?
           </h1>
           <div class="card-categories">
-              <div class="category-btn-sm">
+              <div class="category-btn-sm-lg">
                   <button id="language">linguagem</button>
               </div>
-              <div class="category-btn-sm">
+              <div class="category-btn-sm-lg">
                   <button id="ratings">avaliações</button>
               </div>
           </div>
           <div class="card-graphic">
-              <img src="./assets/img/english-positive-negative-ratings.png" alt="">
+              <div id="english"></div>
           </div>
           <div class="card-subtitle">
               <div class="card-description">
@@ -389,6 +785,57 @@ class CardsView {
           </div>
       </div>
   </section>`;
+
+    google.charts.setOnLoadCallback(english);
+
+    function english() {
+      let data = google.visualization.arrayToDataTable([
+        ["INGLÊS", "CONTAGEM", "MEDIA POSITIVA", "MÉDIA NEGATIVA"],
+        ["OUTRA LINGUAGEM", 1, 204, 215],
+        ["INGLÊS", 2069, 5618.92, 890.81],
+      ]);
+
+      let options = {
+        height: 380,
+        backgroundColor: "#32003a",
+        legend: { textStyle: { color: "#FFFFFF" } },
+        pointSize: 7,
+        seriesType: "bars",
+        series: {
+          pointShape: "circle",
+          1: {
+            type: "line",
+          },
+        },
+        vAxis: {
+          title: "AVALIAÇÕES",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+        hAxis: {
+          title: "LINGUAGEM",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+      };
+
+      let chart = new google.visualization.ComboChart(
+        document.getElementById("english")
+      );
+      chart.draw(data, options);
+    }
   }
 
   findByGenres(section) {
@@ -398,15 +845,15 @@ class CardsView {
               Quais os 10 jogos mais caros e quais os seus gêneros?
           </h1>
           <div class="card-categories">
-              <div class="category-btn-sm">
+              <div class="category-btn-sm-lg">
                   <button id="price">preço</button>
               </div>
-              <div class="category-btn-sm">
+              <div class="category-btn-sm-lg">
                   <button id="genres">gêneros</button>
               </div>
           </div>
           <div class="card-graphic">
-              <img src="./assets/img/games-genres-expensive-grafics.png" alt="">
+              <div id="most-expensive"></div>
           </div>
           <div class="card-subtitle">
               <div class="card-description">
@@ -437,12 +884,12 @@ class CardsView {
                     <div class="category-btn-sm-lg">
                         <button id="downloads">quantidade de downloads</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="genres">gêneros</button>
                     </div>
                 </div>
                 <div class="card-graphic">
-                    <img src="./assets/img/games-genres-downloads-graphics.png" alt="">
+                    <div id="downloads-genres"></div>
                 </div>
                 <div class="card-subtitle">
                     <div class="card-description">
@@ -470,12 +917,12 @@ class CardsView {
                     <div class="category-btn-sm-lg">
                         <button id="age">idade recomendada</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="genres">gêneros</button>
                     </div>
                 </div>
                 <div class="card-graphic">
-                    <img src="./assets/img/games-genres-age-graphics.png" alt="">
+                    <div id="genres-age"></div>
                 </div>
                 <div class="card-subtitle">
                     <div class="card-description">
@@ -501,10 +948,10 @@ class CardsView {
                     Qual é a quantidade de jogos e seus preços com as categorias 'Competitivo' e 'cross-platform'?
                 </h1>
                 <div class="card-categories">
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="price">preço</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="tags">tags</button>
                     </div>
                 </div>
@@ -539,15 +986,15 @@ class CardsView {
                     <div class="category-btn-sm-lg">
                         <button id="developer">desenvolvedora</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="genres">gêneros</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="tags">tags</button>
                     </div>
                 </div>
                 <div class="card-graphic">
-                    <img src="./assets/img/action-games-per-developer-graphic.png" alt="">
+                    <div id="developer-action"></div>
                 </div>
                 <div class="card-subtitle">
                     <div class="card-description">
@@ -565,6 +1012,220 @@ class CardsView {
             </div>
         </section>
   `;
+    google.charts.setOnLoadCallback(mostExpensive);
+
+    function mostExpensive() {
+      let data = new google.visualization.arrayToDataTable([
+        ["JOGO", "CATEGORIA", "PREÇO"],
+        ["3DCoat 4.8", "Animação", 95.99],
+        ["Leadwerks", "Animação; Ilustração", 78.99],
+        ["Aartform Curvy 3D 3.0", "Animação", 75.99],
+        ["Clickteam Fusion 2.5", "Animação; Educação", 69.99],
+        ["Wing IDE 5", "Utilidades", 60.99],
+        ["RPG Maker VX Ace", "Ilustração", 52.99],
+        ["Call of Duty: Ghosts", "Ação", 39.99],
+        ["Call of Duty: A W", "Ação", 39.99],
+        ["Wreckfest", "Ação; Independente", 38.99],
+        ["F.E.A.R.", "Ação", 35.96],
+      ]);
+
+      let options = {
+        height: 400,
+        backgroundColor: "#32003a",
+        chartArea: {
+          width: "60%",
+          backgroundColor: "#32003a",
+        },
+        legend: {
+          position: "none",
+        },
+        bar: {
+          groupWidth: "60%",
+        },
+        hAxis: {
+          title: "NOME DO JOGO",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+            fontName: "Verdana",
+            fontSize: 12,
+          },
+          minValue: 0,
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+            fontSize: 5.5,
+          },
+        },
+        vAxis: {
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+      };
+
+      let chart = new google.charts.Bar(
+        document.getElementById("most-expensive")
+      );
+      chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+
+    google.charts.setOnLoadCallback(downloadsGenres);
+
+    function downloadsGenres() {
+      let data = google.visualization.arrayToDataTable([
+        ["GÊNEROS", "DOWNLOADS"],
+        ["Ação", 246780.0],
+        ["Estratégia", 63380.0],
+        ["Jogo de Representação", 37830.0],
+        ["Aventura", 10350.0],
+        ["Corrida", 8390.0],
+        ["Independente", 8110.0],
+        ["Acessíveis ao Grande Público", 2240.0],
+        ["Publicados na Web", 100.0],
+        ["Utilidades", 20.0],
+      ]);
+
+      let options = {
+        height: 380,
+        chartArea: { left: 200 },
+        backgroundColor: "#32003a",
+        curveType: "function",
+        colors: ["#99ed06"],
+        pointSize: 5,
+        series: { pointShape: "circle" },
+        legend: { position: "none" },
+        hAxis: {
+          title: "GÊNEROS",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+        vAxis: {
+          title: "DOWNLOADS",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+      };
+
+      let chart = new google.visualization.LineChart(
+        document.getElementById("downloads-genres")
+      );
+
+      chart.draw(data, options);
+    }
+
+    google.charts.setOnLoadCallback(genresAge);
+
+    function genresAge() {
+      let data = google.visualization.arrayToDataTable([
+        ["GÊNEROS", "IDADE MÍNIMA"],
+        ["Ação", 18],
+        ["Violência; Estratégia", 18],
+        ["Ação; Aventura", 18],
+        ["Ação; RPG", 18],
+        ["Ação; Simulação", 18],
+      ]);
+
+      let options = {
+        chartArea: { height: 250 },
+        height: 380,
+        backgroundColor: "#32003a",
+        pointSize: 5,
+        series: { pointShape: "circle" },
+        legend: {
+          position: "none",
+        },
+        hAxis: {
+          title: "GÊNEROS",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+        vAxis: {
+          minValue: 0,
+          title: "IDADE MÍNIMA",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+      };
+
+      let chart = new google.visualization.AreaChart(
+        document.getElementById("genres-age")
+      );
+      chart.draw(data, options);
+    }
+
+    google.charts.setOnLoadCallback(developerAction);
+
+    function developerAction() {
+      let data = google.visualization.arrayToDataTable([
+        ["DESENVOLVEDORA", "QUANTIDADE DE JOGOS DE AÇÃO"],
+        ["Valve", 19],
+        ["Ubisoft Montreal", 14],
+        ["id Software", 14],
+        ["NovaLogic", 9],
+        ["Rebellion", 8],
+        ["Capcom", 8],
+        ["Gaijin Games", 7],
+        ["Bohemia Interactive", 7],
+        ["Crystal Dynamics", 7],
+        ["Sigma Team Inc.", 7],
+      ]);
+
+      let options = {
+        height: 380,
+        backgroundColor: "#32003a",
+        chartArea: {
+          left: 350,
+          height: "60%",
+          width: "60%",
+        },
+        legend: {
+          position: "none",
+        },
+        hAxis: {
+          title: "QUANTIDADE DE JOGOS DE AÇÃO",
+          titleTextStyle: { color: "#FFF", italic: false, fontName: "Verdana" },
+          minValue: 0,
+          textStyle: { color: "#FFF", fontName: "Verdana" },
+        },
+        vAxis: {
+          title: "DESENVOLVEDORA",
+          titleTextStyle: { color: "#FFF", italic: false, fontName: "Verdana" },
+          textStyle: { color: "#FFF", fontName: "Verdana" },
+        },
+      };
+
+      let chart = new google.visualization.BarChart(
+        document.getElementById("developer-action")
+      );
+
+      chart.draw(data, options);
+    }
   }
 
   findByDate(section) {
@@ -579,7 +1240,7 @@ class CardsView {
               </div>
           </div>
           <div class="card-graphic">
-              <img src="./assets/img/games-ten-years-graphics.png" alt="">
+              <div id="ten-years"></div>
           </div>
           <div class="card-subtitle">
               <div class="card-description">
@@ -597,6 +1258,43 @@ class CardsView {
           </div>
       </div>
   </section>`;
+
+    google.charts.setOnLoadCallback(tenYears);
+
+    function tenYears() {
+      let data = google.visualization.arrayToDataTable([
+        ["IDADE MÍNIMA", "CONTAGEM"],
+        ["2012", 310],
+        ["2013", 362],
+        ["2014", 198],
+        ["2015", 61],
+        ["2016", 31],
+        ["2017", 16],
+        ["2018", 10],
+        ["2019", 4],
+      ]);
+
+      let options = {
+        chartArea: { height: 350 },
+        height: 380,
+        pieHole: 0.5,
+        pieSliceTextStyle: {
+          color: "white",
+        },
+        backgroundColor: "#32003a",
+        fontName: "Verdana",
+        legend: {
+          position: "left",
+          alignment: "center",
+          textStyle: { color: "#FFFFFF" },
+        },
+      };
+
+      let chart = new google.visualization.PieChart(
+        document.getElementById("ten-years")
+      );
+      chart.draw(data, options);
+    }
   }
 
   findByTags(section) {
@@ -610,7 +1308,7 @@ class CardsView {
               <div class="category-btn-sm-lg">
                   <button id="playtime">tempo de jogo</button>
               </div>
-              <div class="category-btn-sm">
+              <div class="category-btn-sm-lg">
                   <button id="tags">tags</button>
               </div>
               <div class="category-btn-sm-lg">
@@ -618,7 +1316,7 @@ class CardsView {
               </div>
           </div>
           <div class="card-graphic">
-              <img src="./assets/img/tag-assassin-required-age-graphics.png" alt="">
+              <div id="assassin"><div>
           </div>
           <div class="card-subtitle">
               <div class="card-description">
@@ -644,10 +1342,10 @@ class CardsView {
                     Qual é a quantidade de jogos e seus preços com as categorias 'Competitivo' e 'cross-platform'?
                 </h1>
                 <div class="card-categories">
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="price">preço</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="tags">tags</button>
                     </div>
                 </div>
@@ -682,15 +1380,15 @@ class CardsView {
                     <div class="category-btn-sm-lg">
                         <button id="developer">desenvolvedora</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="genres">gêneros</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="tags">tags</button>
                     </div>
                 </div>
                 <div class="card-graphic">
-                    <img src="./assets/img/action-games-per-developer-graphic.png" alt="">
+                    <div id="developer-action"></div>
                 </div>
                 <div class="card-subtitle">
                     <div class="card-description">
@@ -708,6 +1406,100 @@ class CardsView {
             </div>
         </section>
   `;
+
+    google.charts.setOnLoadCallback(assassin);
+
+    function assassin() {
+      let data = google.visualization.arrayToDataTable([
+        ["NOME DO JOGO", "TEMPO MÉDIO"],
+        ["Counter-Strike", 17612],
+        [`Assassin's Creed IV Black Flag`, 3234],
+        [`Assassin'S Creed 2 Deluxe Edition`, 1046],
+        ["Dishonored", 749],
+        [`Assassin's Creed: Director's Cut Edition`, 360],
+        ["Styx: Master of Shadows", 243],
+        ["The Ship: Murder Party", 233],
+        ["Velvet Assassin", 9],
+      ]);
+
+      let options = {
+        height: 380,
+        backgroundColor: "#32003a",
+        chartArea: {
+          left: 350,
+          height: "60%",
+          width: "60%",
+        },
+        legend: {
+          position: "none",
+        },
+        hAxis: {
+          title: "TEMPO MÉDIO",
+          titleTextStyle: { color: "#FFF", italic: false, fontName: "Verdana" },
+          minValue: 0,
+          maxValue: 18000,
+          textStyle: { color: "#FFF", fontName: "Verdana" },
+        },
+        vAxis: {
+          title: "NOME DO JOGO",
+          titleTextStyle: { color: "#FFF", italic: false, fontName: "Verdana" },
+          textStyle: { color: "#FFF", fontName: "Verdana" },
+        },
+      };
+      let chart = new google.visualization.BarChart(
+        document.getElementById("assassin")
+      );
+
+      chart.draw(data, options);
+    }
+
+    google.charts.setOnLoadCallback(developerAction);
+
+    function developerAction() {
+      let data = google.visualization.arrayToDataTable([
+        ["DESENVOLVEDORA", "QUANTIDADE DE JOGOS DE AÇÃO"],
+        ["Valve", 19],
+        ["Ubisoft Montreal", 14],
+        ["id Software", 14],
+        ["NovaLogic", 9],
+        ["Rebellion", 8],
+        ["Capcom", 8],
+        ["Gaijin Games", 7],
+        ["Bohemia Interactive", 7],
+        ["Crystal Dynamics", 7],
+        ["Sigma Team Inc.", 7],
+      ]);
+
+      let options = {
+        height: 380,
+        backgroundColor: "#32003a",
+        chartArea: {
+          left: 350,
+          height: "60%",
+          width: "60%",
+        },
+        legend: {
+          position: "none",
+        },
+        hAxis: {
+          title: "QUANTIDADE DE JOGOS DE AÇÃO",
+          titleTextStyle: { color: "#FFF", italic: false, fontName: "Verdana" },
+          minValue: 0,
+          textStyle: { color: "#FFF", fontName: "Verdana" },
+        },
+        vAxis: {
+          title: "DESENVOLVEDORA",
+          titleTextStyle: { color: "#FFF", italic: false, fontName: "Verdana" },
+          textStyle: { color: "#FFF", fontName: "Verdana" },
+        },
+      };
+
+      let chart = new google.visualization.BarChart(
+        document.getElementById("developer-action")
+      );
+
+      chart.draw(data, options);
+    }
   }
 
   findByDeveloper(section) {
@@ -720,12 +1512,12 @@ class CardsView {
               <div class="category-btn-sm-lg">
                   <button id="developer">desenvolvedora</button>
               </div>
-              <div class="category-btn-sm">
+              <div class="category-btn-sm-lg">
                   <button id="ratings">avaliações</button>
               </div>
           </div>
           <div class="card-graphic">
-              <img src="./assets/img/developer-negative-ratings-graphics.png" alt="">
+              <div id="developer-ratings"></div>
           </div>
           <div class="card-subtitle">
               <div class="card-description">
@@ -756,15 +1548,15 @@ class CardsView {
                     <div class="category-btn-sm-lg">
                         <button id="developer">desenvolvedora</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="genres">gêneros</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="tags">tags</button>
                     </div>
                 </div>
                 <div class="card-graphic">
-                    <img src="./assets/img/action-games-per-developer-graphic.png" alt="">
+                    <div id="developer-action"></div>
                 </div>
                 <div class="card-subtitle">
                     <div class="card-description">
@@ -787,7 +1579,7 @@ class CardsView {
                     Quais jogos possuem uma descrição, e quais são as suas desenvolvedoras?
                 </h1>
                 <div class="card-categories">
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="description">descrição</button>
                     </div>
                     <div class="category-btn-sm-lg">
@@ -813,6 +1605,93 @@ class CardsView {
             </div>
         </section>
   `;
+    google.charts.setOnLoadCallback(developerRatings);
+
+    function developerRatings() {
+      let data = google.visualization.arrayToDataTable([
+        ["DESENVOLVEDORA", "AVALIAÇÕES NEGATIVAS"],
+        ["Valve; Hidden Path Entertainment", 402.313],
+        ["OVERKILL", 56.523],
+        ["RETO MOTO", 34.416],
+        ["Rockstar North", 18.926],
+        ["The Fun Pimps", 16.905],
+        ["Expansive Worlds", 15.403],
+        ["Rocksteady Studios", 12.981],
+        ["Relic Entertainment", 12.038],
+        ["Little Orbit", 11.779],
+        ["Gearbox Software", 11.021],
+        ["Torn Banner Studios", 10.939],
+        ["Phosphor Games Studio", 10.167],
+        ["Endnight Games Ltd", 8.881],
+        ["Sledgehammer Games", 8.379],
+        ["Chucklefish", 7.816],
+      ]);
+
+      let options = {
+        chartArea: { height: 350 },
+        height: 380,
+        pieHole: 0.5,
+        pieSliceTextStyle: {
+          color: "white",
+        },
+        backgroundColor: "#32003a",
+        fontName: "Verdana",
+        legend: { position: "left", textStyle: { color: "#FFFFFF" } },
+      };
+
+      let chart = new google.visualization.PieChart(
+        document.getElementById("developer-ratings")
+      );
+      chart.draw(data, options);
+    }
+
+    google.charts.setOnLoadCallback(developerAction);
+
+    function developerAction() {
+      let data = google.visualization.arrayToDataTable([
+        ["DESENVOLVEDORA", "QUANTIDADE DE JOGOS DE AÇÃO"],
+        ["Valve", 19],
+        ["Ubisoft Montreal", 14],
+        ["id Software", 14],
+        ["NovaLogic", 9],
+        ["Rebellion", 8],
+        ["Capcom", 8],
+        ["Gaijin Games", 7],
+        ["Bohemia Interactive", 7],
+        ["Crystal Dynamics", 7],
+        ["Sigma Team Inc.", 7],
+      ]);
+
+      let options = {
+        height: 380,
+        backgroundColor: "#32003a",
+        chartArea: {
+          left: 350,
+          height: "60%",
+          width: "60%",
+        },
+        legend: {
+          position: "none",
+        },
+        hAxis: {
+          title: "QUANTIDADE DE JOGOS DE AÇÃO",
+          titleTextStyle: { color: "#FFF", italic: false, fontName: "Verdana" },
+          minValue: 0,
+          textStyle: { color: "#FFF", fontName: "Verdana" },
+        },
+        vAxis: {
+          title: "DESENVOLVEDORA",
+          titleTextStyle: { color: "#FFF", italic: false, fontName: "Verdana" },
+          textStyle: { color: "#FFF", fontName: "Verdana" },
+        },
+      };
+
+      let chart = new google.visualization.BarChart(
+        document.getElementById("developer-action")
+      );
+
+      chart.draw(data, options);
+    }
   }
 
   findByPlaytime(section) {
@@ -826,7 +1705,7 @@ class CardsView {
               <div class="category-btn-sm-lg">
                   <button id="playtime">tempo de jogo</button>
               </div>
-              <div class="category-btn-sm">
+              <div class="category-btn-sm-lg">
                   <button id="tags">tags</button>
               </div>
               <div class="category-btn-sm-lg">
@@ -834,7 +1713,7 @@ class CardsView {
               </div>
           </div>
           <div class="card-graphic">
-              <img src="./assets/img/tag-assassin-required-age-graphics.png" alt="">
+              <div id="assassin"></div>
           </div>
           <div class="card-subtitle">
               <div class="card-description">
@@ -855,6 +1734,52 @@ class CardsView {
       </div>
   </section>
   `;
+
+    google.charts.setOnLoadCallback(assassin);
+
+    function assassin() {
+      let data = google.visualization.arrayToDataTable([
+        ["NOME DO JOGO", "TEMPO MÉDIO"],
+        ["Counter-Strike", 17612],
+        [`Assassin's Creed IV Black Flag`, 3234],
+        [`Assassin'S Creed 2 Deluxe Edition`, 1046],
+        ["Dishonored", 749],
+        [`Assassin's Creed: Director's Cut Edition`, 360],
+        ["Styx: Master of Shadows", 243],
+        ["The Ship: Murder Party", 233],
+        ["Velvet Assassin", 9],
+      ]);
+
+      let options = {
+        height: 380,
+        backgroundColor: "#32003a",
+        chartArea: {
+          left: 350,
+          height: "60%",
+          width: "60%",
+        },
+        legend: {
+          position: "none",
+        },
+        hAxis: {
+          title: "TEMPO MÉDIO",
+          titleTextStyle: { color: "#FFF", italic: false, fontName: "Verdana" },
+          minValue: 0,
+          maxValue: 18000,
+          textStyle: { color: "#FFF", fontName: "Verdana" },
+        },
+        vAxis: {
+          title: "NOME DO JOGO",
+          titleTextStyle: { color: "#FFF", italic: false, fontName: "Verdana" },
+          textStyle: { color: "#FFF", fontName: "Verdana" },
+        },
+      };
+      let chart = new google.visualization.BarChart(
+        document.getElementById("assassin")
+      );
+
+      chart.draw(data, options);
+    }
   }
 
   findByDescription(section) {
@@ -864,7 +1789,7 @@ class CardsView {
               Quais jogos possuem uma descrição, e quais são as suas desenvolvedoras?
           </h1>
           <div class="card-categories">
-              <div class="category-btn-sm">
+              <div class="category-btn-sm-lg">
                   <button id="description">descrição</button>
               </div>
               <div class="category-btn-sm-lg">
@@ -898,12 +1823,12 @@ class CardsView {
               Quantos jogos possuem um website oficial para suporte?
           </h1>
           <div class="card-categories">
-              <div class="category-btn-sm">
+            <div class="category-btn-sm-lg">
                   <button id="supp">suporte</button>
               </div>
           </div>
           <div class="card-graphic">
-              <img src="./assets/img/games-with-website-graphic.png" alt="">
+              <div id="website"></div>
           </div>
           <div class="card-subtitle">
               <div class="card-description">
@@ -927,15 +1852,15 @@ class CardsView {
                     Dos jogos que possuem e-mail de suporte, há mais avaliações positivas ou negativas?
                 </h1>
                 <div class="card-categories">
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="supp">suporte</button>
                     </div>
-                    <div class="category-btn-sm">
+                    <div class="category-btn-sm-lg">
                         <button id="ratings">avaliações</button>
                     </div>
                 </div>
                 <div class="card-graphic">
-                    <img src="./assets/img/games-support-email-graphic.png" alt="">
+                    <div id="email"></div>
                 </div>
                 <div class="card-subtitle">
                     <div class="card-description">
@@ -953,6 +1878,99 @@ class CardsView {
             </div>
         </section>
   `;
+
+    google.charts.setOnLoadCallback(website);
+
+    function website() {
+      let data = google.visualization.arrayToDataTable([
+        ["WEBSITE", "QUANTIDADE DE JOGOS"],
+        ["Não possui website", 138],
+        ["Possui website", 1770],
+      ]);
+
+      let options = {
+        height: 380,
+        backgroundColor: "#32003a",
+        chartArea: {
+          left: 300,
+          width: "60%",
+        },
+        legend: {
+          position: "none",
+        },
+        hAxis: {
+          title: "QUANTIDADE DE JOGOS",
+          titleTextStyle: { color: "#FFF", italic: false, fontName: "Verdana" },
+          minValue: 0,
+          textStyle: { color: "#FFF", fontName: "Verdana" },
+        },
+        vAxis: {
+          title: "WEBSITE",
+          titleTextStyle: { color: "#FFF", italic: false, fontName: "Verdana" },
+          textStyle: { color: "#FFF", fontName: "Verdana" },
+        },
+      };
+
+      let chart = new google.visualization.BarChart(
+        document.getElementById("website")
+      );
+
+      chart.draw(data, options);
+    }
+
+    google.charts.setOnLoadCallback(email);
+
+    function email() {
+      let data = google.visualization.arrayToDataTable([
+        ["TIPO DE AVALIAÇÃO", "SOMA TOTAL", "MÉDIA GERAL"],
+        ["POSITIVA", 3763.778, 3647.07],
+        ["NEGATIVA", 644.446, 624.46],
+      ]);
+
+      let options = {
+        chartArea: { height: 320 },
+        height: 390,
+        backgroundColor: "#32003a",
+        colors: ["#faf170"],
+        hAxis: {
+          title: "MÉDIA",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+        vAxis: {
+          title: "QUANTIDADE",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+        bubble: {
+          textStyle: {
+            fontSize: 10,
+            fontName: "Verdana",
+            color: "black",
+            bold: false,
+            italic: false,
+            auraColor: "none",
+          },
+        },
+      };
+
+      let chart = new google.visualization.BubbleChart(
+        document.getElementById("email")
+      );
+      chart.draw(data, options);
+    }
   }
 
   findByDownloads(section) {
@@ -966,12 +1984,12 @@ class CardsView {
               <div class="category-btn-sm-lg">
                   <button id="downloads">quantidade de downloads</button>
               </div>
-              <div class="category-btn-sm">
+              <div class="category-btn-sm-lg">
                   <button id="genres">gêneros</button>
               </div>
           </div>
           <div class="card-graphic">
-              <img src="./assets/img/games-genres-downloads-graphics.png" alt="">
+              <div id="downloads-genres"></div>
           </div>
           <div class="card-subtitle">
               <div class="card-description">
@@ -990,6 +2008,61 @@ class CardsView {
           </div>
       </div>
   </section>`;
+    google.charts.setOnLoadCallback(downloadsGenres);
+
+    function downloadsGenres() {
+      let data = google.visualization.arrayToDataTable([
+        ["GÊNEROS", "DOWNLOADS"],
+        ["Ação", 246780.0],
+        ["Estratégia", 63380.0],
+        ["Jogo de Representação", 37830.0],
+        ["Aventura", 10350.0],
+        ["Corrida", 8390.0],
+        ["Independente", 8110.0],
+        ["Acessíveis ao Grande Público", 2240.0],
+        ["Publicados na Web", 100.0],
+        ["Utilidades", 20.0],
+      ]);
+
+      let options = {
+        height: 380,
+        chartArea: { left: 200 },
+        backgroundColor: "#32003a",
+        curveType: "function",
+        colors: ["#99ed06"],
+        pointSize: 5,
+        series: { pointShape: "circle" },
+        legend: { position: "none" },
+        hAxis: {
+          title: "GÊNEROS",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+        vAxis: {
+          title: "DOWNLOADS",
+          titleTextStyle: {
+            color: "#FFF",
+            italic: false,
+          },
+          textStyle: {
+            color: "#FFF",
+            fontName: "Verdana",
+          },
+        },
+      };
+
+      let chart = new google.visualization.LineChart(
+        document.getElementById("downloads-genres")
+      );
+
+      chart.draw(data, options);
+    }
   }
 }
 
