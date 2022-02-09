@@ -321,8 +321,9 @@ body {
 /* PÁGINA CONTATO */
 #div-contato-1 {
   margin-top: 50px;
+  margin-right: 300px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
@@ -330,6 +331,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   margin-top: 10px;
+  margin-left: 300px;
   flex-wrap: wrap;
   margin-bottom: 20px;
 }
